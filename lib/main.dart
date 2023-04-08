@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Animated Container',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 45),
+        scaffoldBackgroundColor: const Color.fromARGB(254, 18, 32, 45),
       ),
       home: const MyHomePage(),
     );
@@ -44,16 +44,21 @@ class _MyHomePageState extends State<MyHomePage> {
               _selected = !_selected;
             });
           },
-          child: AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            height: _selected ? 200 : 100,
-            width: _selected ? 200 : 100,
-            alignment: _selected ? Alignment.topLeft : Alignment.bottomRight,
-            decoration: BoxDecoration(
-              color: _selected ? Colors.redAccent : Colors.deepPurple,
-              borderRadius: BorderRadius.circular(_selected ? 100 : 10),
-              // shape: _selected ? BoxShape.circle : BoxShape.rectangle,
-            ),
+          child: Row(
+            children: [
+              Container(alignment: Alignment.center),
+              AnimatedContainer(
+                duration: const Duration(seconds: 1),
+                height: _selected ? 200 : 100,
+                width: _selected ? 200 : 100,
+                alignment: _selected ? Alignment.topLeft : Alignment.bottomRight,
+                decoration: BoxDecoration(
+                  color: _selected ? Colors.redAccent : Colors.deepPurple,
+                  borderRadius: BorderRadius.circular(_selected ? 100 : 10),
+                  // shape: _selected ? BoxShape.circle : BoxShape.rectangle,
+                ),
+              ),
+            ],
           ),
         ),
       ),
